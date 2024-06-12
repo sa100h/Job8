@@ -10,7 +10,7 @@ CREATE OR REPLACE  VIEW station_with_line AS
 	INNER JOIN lines l
 		ON l.id = sl.line_id
 	group by s.id, s.name 
-	order by 1
+	order by 1;
 	
 
 -- Информация о пассажире в главной форме 
@@ -30,7 +30,7 @@ CREATE OR REPLACE VIEW form_main_passenger AS
 		, add_info as add_info
 	FROM passengers p
 	INNER JOIN categories c
-		on c.id = category_id
+		on c.id = category_id;
 
 
 
@@ -74,7 +74,7 @@ CREATE OR REPLACE VIEW form_main_bid AS
 	)
 	select
 		*
-	from bids_all
+	from bids_all;
 
 
 
@@ -149,7 +149,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 	)
 	select
 		*
-	from bids_all
+	from bids_all;
 
 
 	
@@ -185,7 +185,7 @@ CREATE OR REPLACE VIEW form_main_user_and_role AS
 	LEFT JOIN employee_works ew
 		ON ew.id = elw.id
 	LEFT JOIN ranks ra
-		on ra.id = ew.rank_id
+		on ra.id = ew.rank_id;
 
 
 
@@ -235,5 +235,5 @@ CREATE OR REPLACE VIEW form_view_user_and_role AS
 	LEFT JOIN ranks ra
 		on ra.id = ew.rank_id
 	LEFT JOIN shifts s
-		ON s.id = ew.shift_id
+		ON s.id = ew.shift_id;
 
