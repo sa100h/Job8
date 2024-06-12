@@ -14,7 +14,7 @@ CREATE OR REPLACE  VIEW station_with_line AS
 	
 
 -- Информация о пассажире в главной форме 
-CREATE OR REPLACE VIEW main_passenger AS
+CREATE OR REPLACE VIEW form_main_passenger AS
 	SELECT 
 		  p.id as pas_id
 		, last_name as last_name
@@ -35,7 +35,7 @@ CREATE OR REPLACE VIEW main_passenger AS
 
 
 -- Информация о заявке в главной форме 
-CREATE OR REPLACE VIEW main_bid AS
+CREATE OR REPLACE VIEW form_main_bid AS
 	with
 	  bids_with_employees as
 	(
@@ -79,8 +79,8 @@ CREATE OR REPLACE VIEW main_bid AS
 
 
 
--- Информация о заявке в форме редактирования/Просмотра
-CREATE OR REPLACE VIEW form_edit_bid AS
+-- Информация о заявке в форме Просмотра
+CREATE OR REPLACE VIEW form_view_bid AS
 	with
 	  bids_with_employees as
 	(
@@ -136,7 +136,7 @@ CREATE OR REPLACE VIEW form_edit_bid AS
 
 			, am.name as acceptance_method
 		FROM bids b
-		INNER JOIN main_passenger mp
+		INNER JOIN form_main_passenger mp
 			ON mp.pas_id = b.pas_id
 		INNER JOIN statuses s
 			ON s.id = status_id
@@ -150,3 +150,5 @@ CREATE OR REPLACE VIEW form_edit_bid AS
 	select
 		*
 	from bids_all
+
+
