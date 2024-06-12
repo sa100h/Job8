@@ -41,7 +41,7 @@ SELECT setVal(	'"public"."operation_types_id_seq"',
 ---- Добавление в словари таблицы
 
 ---ДОБАВЛЯЕМ Должности
-INSERT INTO public.ranks( id, name, create_time, create_user_id) VALUES 
+INSERT INTO public.ranks( id, name) VALUES 
 (1,'ЦУ'),
 (2,'ЦСИ'),
 (3,'ЦИ');
@@ -53,7 +53,7 @@ SELECT setVal(	'"public"."ranks_id_seq"',
 		
 
 ---ДОБАВЛЯЕМ Статусы
-INSERT INTO public.statuses( id, name, create_time, create_user_id) VALUES 
+INSERT INTO public.statuses( id, name) VALUES 
 (1,'Не подтверждена'),
 (2,'В рассмотрении'),
 (3,'Принята'),
@@ -73,7 +73,7 @@ SELECT setVal(	'"public"."statuses_id_seq"',
 				(select max("id") FROM public."statuses"));
 	
 ---ДОБАВЛЯЕМ категории пассажиров
-INSERT INTO public.passenger_categories( id,code, name, description, create_time, create_user_id) VALUES 
+INSERT INTO public.categories( id,code, name, description) VALUES 
 (1, 'ИЗТ', 'Инвалид по зрению', 'тотальный, сопровождение по метрополитену'),
 (2, 'ИЗ', 'Инвалид по зрению с остаточным зрением', 'слабовидящий, сопровождение по метрополитену'),
 (3, 'ИС', 'Инвалид по слуху', 'в основном помощь в ориентировании'),
@@ -86,9 +86,10 @@ INSERT INTO public.passenger_categories( id,code, name, description, create_time
 (10, 'ОГД', 'Организованные группы детей', 'сопровождение по метрополитену'),
 (11, 'ОВ', 'Временно маломобильные', 'после операции, переломы и прочее'),
 (12, 'ИУ', 'Люди с ментальной инвалидностью', NULL);
-SELECT nextVal('"public"."passenger_categories_id_seq"');
-SELECT setVal(	'"public"."passenger_categories_id_seq"',
-				(select max("id") FROM public."passenger_categories"));
+
+SELECT nextVal('"public"."categories_id_seq"');
+SELECT setVal(	'"public"."categories_id_seq"',
+				(select max("id") FROM public."categories"));
 
 ---ДОБАВЛЯЕМ Медоды приема
 INSERT INTO public.acceptance_methods(id, name) VALUES 
@@ -114,20 +115,9 @@ INSERT INTO public.areas( id, name) VALUES
 SELECT nextVal('"public"."areas_id_seq"');
 SELECT setVal(	'"public"."areas_id_seq"',
 				(select max("id") FROM public."areas"));
-
----ДОБАВЛЯЕМ в Типы операций
-INSERT INTO public.operation_types( id, name) VALUES 
-(1,'Создание'),
-(2,'Редактирование'),
-(3,'Удаление');
-
-
-SELECT nextVal('"public"."operation_types_id_seq"');
-SELECT setVal(	'"public"."operation_types_id_seq"',
-				(select max("id") FROM public."operation_types"));
-				
+			
 ---ДОБАВЛЯЕМ Смены
-INSERT INTO public.shifts( id, name, create_time, create_user_id) VALUES 
+INSERT INTO public.shifts( id, name) VALUES 
 (1,'1'),
 (2,'2'),
 (3,'1(Н)'),
@@ -631,7 +621,7 @@ SELECT setVal(	'"public"."bids_id_seq"',
 
 
 ---- не нужно
-
+/*
 
 
 
@@ -773,3 +763,5 @@ from t1
 order by 1;
 
 DROP TABLE IF EXISTS temp_json_data_table;
+
+*/
