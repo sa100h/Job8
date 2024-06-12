@@ -22,8 +22,9 @@ LANGUAGE plpgsql;
 
 -- Создание роли
 create or replace function create_roles(
-	_name CHARACTER VARYING(50),
-	_user_id INTEGER
+	_user_id INTEGER,
+	_name CHARACTER VARYING(50)
+	
 ) 
 returns integer AS
 $BODY$
@@ -65,12 +66,12 @@ LANGUAGE plpgsql;
 
 --Добавление пассажира
 create or replace function add_passengers(
+	_user_id INTEGER,
 	_last_name CHARACTER VARYING(20),
 	_first_name CHARACTER VARYING(20),
 	_is_male bit,
 	_category_id INTEGER,
 	_is_EKS bit,
-	_user_id INTEGER,
 	_middle_name CHARACTER VARYING(20) default null,
 	_phone_info  CHARACTER VARYING(1000) default null,
 	_add_info CHARACTER VARYING(1000) default null

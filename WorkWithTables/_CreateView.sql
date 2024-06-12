@@ -4,6 +4,7 @@ CREATE OR REPLACE  VIEW station_with_line AS
 		  s.id as station_id
 		, s.name as station_name
 		, STRING_AGG(l.name, ', ') as line_name
+		, min(l.color_hex::text) AS color_hex
 	FROM stations s
 	INNER JOIN station_lines sl
 		ON sl.station_id = s.id
@@ -237,3 +238,35 @@ CREATE OR REPLACE VIEW form_view_user_and_role AS
 	LEFT JOIN shifts s
 		ON s.id = ew.shift_id;
 
+
+-- Информация о сотрудниках в  форме заявки
+CREATE OR REPLACE VIEW form_select_employee_in_bid AS
+	with
+	emp_last_work as
+	(
+		select 
+			  employee_id as employee_id
+			, max(id) as id
+		from employee_works
+		group by employee_id
+	)
+	SELECT 
+		  u.id as user_id
+		, u.last_name as last_name
+		, u.first_name as first_name
+		, u.middle_name as middle_name
+		, a.name as area_name 
+		, e.personnel_number as personnel_number
+	FROM users u
+	INNER JOIN user_roles ur
+		on ur.user_id = u.id
+	INNER JOIN roles ro
+		on ro.id = ur.role_id
+	LEFT JOIN employees e
+		on e.user_id = u.id
+	LEFT JOIN emp_last_work elw
+		ON elw.employee_id = e.user_id
+	LEFT JOIN employee_works ew
+		ON ew.id = elw.id
+	LEFT JOIN areas a
+		ON a.id = ew.area_id

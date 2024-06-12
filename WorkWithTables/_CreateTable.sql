@@ -15,6 +15,7 @@ CREATE TABLE statuses
 (
 	id SERIAL ,
 	name CHARACTER VARYING(50) NOT NULL,
+	color_class CHARACTER VARYING(20) NOT NULL,
 	
 	CONSTRAINT pk__statuses__id 
 		PRIMARY KEY (id)
@@ -66,6 +67,7 @@ CREATE TABLE lines
 (
     id SERIAL,
     name CHARACTER VARYING(100),
+	color_hex CHARACTER VARYING(7),
 	
 	CONSTRAINT pk__lines__id 
 		PRIMARY KEY (id)
