@@ -136,8 +136,8 @@ create or replace function add_bid(
 	_execution_time time,
 	_number_all INTEGER,
 	_acceptance_method_id INTEGER,
-	
 	_is_need_help bit,
+	_employee_ids INTEGER[] default null,
 	_baggage_type CHARACTER VARYING(50) default null,
 	_baggage_weight CHARACTER VARYING(50) default null,
 	_st_beg_desc CHARACTER VARYING(150)  default null,

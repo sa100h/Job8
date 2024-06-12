@@ -251,7 +251,7 @@ CREATE OR REPLACE VIEW form_select_employee_in_bid AS
 		group by employee_id
 	)
 	SELECT 
-		  u.id as user_id
+		  ew.id as id
 		, u.last_name as last_name
 		, u.first_name as first_name
 		, u.middle_name as middle_name
