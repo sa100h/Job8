@@ -78,6 +78,7 @@ CREATE OR REPLACE VIEW main_bid AS
 
 
 
+
 -- Информация о заявке в форме редактирования/Просмотра
 CREATE OR REPLACE VIEW form_edit_bid AS
 	with
@@ -104,20 +105,48 @@ CREATE OR REPLACE VIEW form_edit_bid AS
 	(
 		SELECT 
 			  b.id as number
-			, b.start_time as start_time
-			, get_name(p.last_name, p.first_name, p.middle_name) as passenger
-			, bge.employees as employees
 			, s.name as status
+		
+			, mp.last_name as pas_last_name
+			, mp.first_name as pas_first_name
+			, mp.middle_name as pas_middle_name
+			, mp.sex as pas_sex
+			, mp.phone_info as pas_phone_info
+			, mp.category_code as pas_category_code
+			, mp.is_EKS as pas_is_EKS
+			, mp.add_info as pas_add_info
+		
+			, b.count_pass as count_pass
+			, c.code as category_code
+			, b.baggage_type as baggage_type
+			, b.baggage_weight as baggage_weight
+			, b.is_need_help as is_need_help
+		
+			, b.start_time as start_time
+			, st_beg_id as st_beg_id
+			, st_beg_desc as st_beg_desc
+			, st_end_id as st_end_id
+			, st_end_desc as st_end_desc
+
+			, b.number_all as number_all 
+			, b.number_sex_m as number_sex_m
+			, b.number_sex_f as number_sex_f
+			
+			, bge.employees as employees
+
+			, am.name as acceptance_method
 		FROM bids b
-		INNER JOIN passengers p
-			ON p.id = pas_id
+		INNER JOIN main_passenger mp
+			ON mp.pas_id = b.pas_id
 		INNER JOIN statuses s
 			ON s.id = status_id
+		INNER JOIN categories c
+			ON c.id = category_id
+		INNER JOIN acceptance_methods am
+			ON am.id = acceptance_method_id
 		left join bids_with_group_employees bge
 			ON bge.bid_id = b.id
 	)
 	select
 		*
 	from bids_all
-
-
