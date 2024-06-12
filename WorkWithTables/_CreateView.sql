@@ -152,3 +152,88 @@ CREATE OR REPLACE VIEW form_view_bid AS
 	from bids_all
 
 
+	
+
+
+-- Информация о пользователях с ролями в главной форме 
+CREATE OR REPLACE VIEW form_main_user_and_role AS
+	with
+	emp_last_work as
+	(
+		select 
+			  employee_id as employee_id
+			, max(id) as id
+		from employee_works
+		group by employee_id
+	)
+	SELECT 
+		  u.id as user_id
+		, get_name(u.last_name, u.first_name, u.middle_name) as user_name
+		, login as login
+		, password as password
+		, ra.name as rank_name
+		, ro.name as role_name
+	FROM users u
+	INNER JOIN user_roles ur
+		on ur.user_id = u.id
+	INNER JOIN roles ro
+		on ro.id = ur.role_id
+	LEFT JOIN employees e
+		on e.user_id = u.id
+	LEFT JOIN emp_last_work elw
+		ON elw.employee_id = e.user_id
+	LEFT JOIN employee_works ew
+		ON ew.id = elw.id
+	LEFT JOIN ranks ra
+		on ra.id = ew.rank_id
+
+
+
+
+
+
+-- Информация о пользователях с ролями в  форме просмотра 
+CREATE OR REPLACE VIEW form_view_user_and_role AS
+	with
+	emp_last_work as
+	(
+		select 
+			  employee_id as employee_id
+			, max(id) as id
+		from employee_works
+		group by employee_id
+	)
+	SELECT 
+		  u.id as user_id
+		, login as login
+		, password as password
+		, u.last_name as last_name
+		, u.first_name as first_name
+		, u.middle_name as middle_name
+		, ro.name as role_name
+		
+		, ra.name as rank_name
+		, e.is_male as is_male
+		, ew.work_phone as work_phone
+		, e.person_phone as person_phone
+		, s.name as shift_name
+		, ew.start_time as start_time
+		, ew.end_time as end_time
+		, e.personnel_number as personnel_number
+		, ew.only_light_work as only_light_work
+	FROM users u
+	INNER JOIN user_roles ur
+		on ur.user_id = u.id
+	INNER JOIN roles ro
+		on ro.id = ur.role_id
+	LEFT JOIN employees e
+		on e.user_id = u.id
+	LEFT JOIN emp_last_work elw
+		ON elw.employee_id = e.user_id
+	LEFT JOIN employee_works ew
+		ON ew.id = elw.id
+	LEFT JOIN ranks ra
+		on ra.id = ew.rank_id
+	LEFT JOIN shifts s
+		ON s.id = ew.shift_id
+
