@@ -289,3 +289,127 @@ begin
 end;
 $BODY$
 LANGUAGE plpgsql;
+
+
+
+
+
+------------------------------
+SELECT 
+	public.add_bid(
+	_user_id => 1,
+	_status_id => 1,
+	_pas_id => 389,
+	_count_pass => 4,
+	_category_id => 1,
+	_start_time => TO_TIMESTAMP('24.06.2024 15:00:00', 'DD.MM.YYYY HH24:MI:SS')::timestamp,
+	_st_beg_id => 1,
+	_st_end_id => 15,
+	_execution_time => '02:00:00'::time,
+	_number_all => 6,
+	_acceptance_method_id => 1,
+	_is_need_help => 0::bit,
+	_employee_ids => ARRAY [3,4,8],
+	_baggage_type => '_baggage_type',
+	_baggage_weight => '_baggage_weight',
+	_st_beg_desc => '_st_beg_desc',
+	_st_end_desc => '_st_end_desc' ,
+	_number_sex_m => 3 ,
+	_number_sex_f =>1 
+)
+
+
+
+
+
+
+
+
+
+
+-- FUNCTION: public.add_bid(integer, integer, integer, integer, integer, timestamp without time zone, integer, integer, time without time zone, integer, integer, bit, integer[], character varying, character varying, character varying, character varying, integer, integer)
+
+-- DROP FUNCTION IF EXISTS public.add_bid(integer, integer, integer, integer, integer, timestamp without time zone, integer, integer, time without time zone, integer, integer, bit, integer[], character varying, character varying, character varying, character varying, integer, integer);
+
+CREATE OR REPLACE FUNCTION public.add_bid(
+	_user_id integer,
+	_status_id integer,
+	_pas_id integer,
+	_count_pass integer,
+	_category_id integer,
+	_start_time timestamp without time zone,
+	_st_beg_id integer,
+	_st_end_id integer,
+	_execution_time time without time zone,
+	_number_all integer,
+	_acceptance_method_id integer,
+	_is_need_help bit,
+	_employee_ids integer[] DEFAULT NULL::integer[],
+	_baggage_type character varying DEFAULT NULL::character varying,
+	_baggage_weight character varying DEFAULT NULL::character varying,
+	_st_beg_desc character varying DEFAULT NULL::character varying,
+	_st_end_desc character varying DEFAULT NULL::character varying,
+	_number_sex_m integer DEFAULT NULL::integer,
+	_number_sex_f integer DEFAULT NULL::integer)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+declare 
+	_jsonb jsonb;
+	_id INTEGER;
+	-- (209,'bids'),
+	_table_id INTEGER default(209);
+	-- (1,'Создание'),
+	_oper_type_id INTEGER default(1);
+begin
+	INSERT INTO 
+		public.bids(pas_id, count_pass, category_id, baggage_type, baggage_weight, is_need_help
+				  , st_beg_id, st_beg_desc, st_end_id, st_end_desc, start_time
+				  , status_id, number_all, number_sex_m, number_sex_f
+				  , execution_time, acceptance_method_id)
+		VALUES (_pas_id, _count_pass, _category_id, _baggage_type, _baggage_weight, _is_need_help
+				  , _st_beg_id, _st_beg_desc, _st_end_id, _st_end_desc, _start_time
+				  , _status_id, _number_all, _number_sex_m, _number_sex_f
+				  , _execution_time, _acceptance_method_id)
+	RETURNING id
+		INTO _id;
+
+	with
+	inst_data as
+	(
+		select 
+			  _pas_id as pas_id
+			, _count_pass as count_pass
+			, _category_id as category_id
+			, _baggage_type as baggage_type
+			, _baggage_weight as baggage_weight
+			, _is_need_help as is_need_help
+		  	, _st_beg_id as st_beg_id
+			, _st_beg_desc as st_beg_desc
+			, _st_end_id as st_end_id
+			, _st_end_desc as st_end_desc
+			, _start_time as start_time
+			, _status_id as status_id
+			, _number_all as number_all
+			, _number_sex_m as number_sex_m 
+			, _number_sex_f as number_sex_f
+		  	, _execution_time as execution_time
+			, _acceptance_method_id as acceptance_method_id
+			, _employee_ids as employee_work_ids
+	)
+	select
+		 to_jsonb(json_agg(t))
+	from inst_data t
+	INTO _jsonb;
+
+	INSERT INTO public.operations(table_id, oper_type_id, edit_id, edit_value, edit_time, edit_user_id) 
+		VALUES (_table_id, _oper_type_id, _id, _jsonb, now(), _user_id);
+	
+	return _id;
+end;
+$BODY$;
+
+ALTER FUNCTION public.add_bid(integer, integer, integer, integer, integer, timestamp without time zone, integer, integer, time without time zone, integer, integer, bit, integer[], character varying, character varying, character varying, character varying, integer, integer)
+    OWNER TO postgres;
