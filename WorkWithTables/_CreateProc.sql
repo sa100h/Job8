@@ -326,11 +326,6 @@ SELECT
 
 
 
-
--- FUNCTION: public.add_bid(integer, integer, integer, integer, integer, timestamp without time zone, integer, integer, time without time zone, integer, integer, bit, integer[], character varying, character varying, character varying, character varying, integer, integer)
-
--- DROP FUNCTION IF EXISTS public.add_bid(integer, integer, integer, integer, integer, timestamp without time zone, integer, integer, time without time zone, integer, integer, bit, integer[], character varying, character varying, character varying, character varying, integer, integer);
-
 CREATE OR REPLACE FUNCTION public.add_bid(
 	_user_id integer,
 	_status_id integer,
@@ -344,17 +339,14 @@ CREATE OR REPLACE FUNCTION public.add_bid(
 	_number_all integer,
 	_acceptance_method_id integer,
 	_is_need_help bit,
-	_employee_ids integer[] DEFAULT NULL::integer[],
-	_baggage_type character varying DEFAULT NULL::character varying,
-	_baggage_weight character varying DEFAULT NULL::character varying,
-	_st_beg_desc character varying DEFAULT NULL::character varying,
-	_st_end_desc character varying DEFAULT NULL::character varying,
-	_number_sex_m integer DEFAULT NULL::integer,
-	_number_sex_f integer DEFAULT NULL::integer)
+	_employee_work_ids integer[] DEFAULT NULL,
+	_baggage_type character varying DEFAULT NULL,
+	_baggage_weight character varying DEFAULT NULL,
+	_st_beg_desc character varying DEFAULT NULL,
+	_st_end_desc character varying DEFAULT NULL,
+	_number_sex_m integer DEFAULT NULL,
+	_number_sex_f integer DEFAULT NULL)
     RETURNS integer
-    LANGUAGE 'plpgsql'
-    COST 100
-    VOLATILE PARALLEL UNSAFE
 AS $BODY$
 declare 
 	_jsonb jsonb;
@@ -397,7 +389,7 @@ begin
 			, _number_sex_f as number_sex_f
 		  	, _execution_time as execution_time
 			, _acceptance_method_id as acceptance_method_id
-			, _employee_ids as employee_work_ids
+			, _employee_work_ids as employee_work_ids
 	)
 	select
 		 to_jsonb(json_agg(t))
@@ -406,10 +398,27 @@ begin
 
 	INSERT INTO public.operations(table_id, oper_type_id, edit_id, edit_value, edit_time, edit_user_id) 
 		VALUES (_table_id, _oper_type_id, _id, _jsonb, now(), _user_id);
+		
+	with
+	employee_on_bid as
+	(
+		SELECT
+			  _id as bid_id
+			, UNNEST(_employee_work_ids) as employee_work_id
+			, 1::bit as is_automatic
+			, FALSE as is_deleted
+	)
+	INSERT INTO employee_on_bids (bid_id, employee_work_id, is_automatic, is_deleted)
+	select
+		  bid_id
+		, employee_work_id
+		, is_automatic
+		, is_deleted
+	from employee_on_bid;
+	
 	
 	return _id;
 end;
-$BODY$;
 
-ALTER FUNCTION public.add_bid(integer, integer, integer, integer, integer, timestamp without time zone, integer, integer, time without time zone, integer, integer, bit, integer[], character varying, character varying, character varying, character varying, integer, integer)
-    OWNER TO postgres;
+$BODY$
+LANGUAGE plpgsql;
