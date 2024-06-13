@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+
+    margin: 0;
+}
+
+.bg-sign-in {
+    background: url(/img/sign-in-bg.png) no-repeat center center fixed,
+    #f8f9fa;
+    background-size: cover;
+}
+
+.text-gray-600 {
+    color: #6c757d;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+
+    position: absolute;
+    top: calc(50% - 360px / 2);
+    left: calc(50% - 360px / 2);
+    margin-right: -50%;
+}
+
+.sign-in-text {
+    font-size: 20px;
+}
+
+.svg-color {
+    fill: #3d8bfd;
+}
