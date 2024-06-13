@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MosTrans</title>
+
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style_main_form.css">
+</head>
+
+<body>
+    <header class="bg-dark flex-md-nowrap navbar p-0 shadow sticky-top">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
+            <img src="/icons/main_frame_logo.png" alt="" srcset="">
+        </a>
+        <div class="d-flex me-md-5 me-lg-5">
+            <div class="d-flex flex-wrap align-items-center justify-content-lg-end">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-white">
+                            <i class="bi bi-person-fill"></i>
+                            Иванов И.И.
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#" id="dropdown--item--exit">Выход</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="navbar-nav flex-row d-md-none">
+                <li class="nav-item text-nowrap">
+                    <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" >
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+                    </div>
+
+                    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                        <ul class="nav flex-column">
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/orders.html">
+                                    <i class="bi bi-calendar2-event-fill"></i>
+                                    Заявки
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-active" href="#">
+                                    <i class="bi bi-people-fill"></i>
+                                    Пассажиры
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="#">
+                                    <i class="bi bi-clock-fill"></i>
+                                    Рабочий день
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="#">
+                                    <i class="bi bi-graph-up"></i>
+                                    Распределение заявок
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="#">
+                                    <i class="bi bi-person-badge-fill"></i>
+                                    Пользователи и роли
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h4 class="h4">Пассажиры</h4>
+                    <button type="button" class="btn btn-primary" id="button-add-passenger">
+                        <i class="bi bi-plus-lg"></i>
+                        Добавить пассажира
+                    </button>
+                </div>
+
+                <div class="main_table">
+                    <div class="mb-3">
+                        <h6 class="dropdown-header mb-1">Категория пассажира</h6>
+
+                        <div class="d-flex flex-nowrap col-6 col-xl-3">
+                            <select class="form-select me-2 col-4" required="" type-passenger>
+                                <option value="">Выберите категорию</option>
+                            </select>
+
+                            <div class="input-group col-4">
+                                <input type="text" class="form-control" id="passeger-search" placeholder="Поиск">
+                                <span class="input-group-text"><i class="bi-search svg-color"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive small">
+                        <table class="table table-sm align-middle">
+                            <thead>
+                                <tr class="table-light">
+                                    <th scope="col">ФИО пассажира</th>
+                                    <th scope="col">Телефоны</th>
+                                    <th scope="col">Пол</th>
+                                    <th scope="col">Категория</th>
+                                    <th scope="col">ЭКС</th>
+                                    <th scope="col">Доп. информация</th>
+                                    <th scope="col">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
+                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999 - личный телефон, +79999999999 - телефон если не отвечает первый, +79999999999 - телефон если не отвечает третий</th>
+                                    <th class="pt-2 pb-2 font-weight-400">М</th>
+                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
+                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
+                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
+                                        <a class="nav-link sidebar-disable" href="#">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Изменить
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
+                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
+                                    <th class="pt-2 pb-2 font-weight-400">М</th>
+                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
+                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
+                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
+                                        <a class="nav-link sidebar-disable" href="#">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Изменить
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
+                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
+                                    <th class="pt-2 pb-2 font-weight-400">М</th>
+                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
+                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
+                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
+                                        <a class="nav-link sidebar-disable" href="#">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Изменить
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
+                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
+                                    <th class="pt-2 pb-2 font-weight-400">М</th>
+                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
+                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
+                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
+                                        <a class="nav-link sidebar-disable" href="#">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Изменить
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
+                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
+                                    <th class="pt-2 pb-2 font-weight-400">М</th>
+                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
+                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
+                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
+                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
+                                        <a class="nav-link sidebar-disable" href="#">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Изменить
+                                        </a>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <i class="bi bi-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </main>
+        </div>
+    </div>
+
+    <div class="modal modal-1024px fade" id="modal-passenger" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавление нового пассажира</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3 pb-3">
+                        <div class="col-sm-4 pe-4">
+                            <label for="firstName" class="form-label text-body">Фамилия
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="firstName"
+                                placeholder="Введите фамилию" value="" required />
+                        </div>
+                        <div class="col-sm-4 pe-4">
+                            <label for="lastName" class="form-label text-body">Имя
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="lastName"
+                                placeholder="Введите имя" value="" required />
+                        </div>
+                        <div class="col-sm-4 pe-4">
+                            <label for="SecondName" class="form-label text-body">Отчество
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="SecondName"
+                                placeholder="Введите отчество" value="" required />
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3 pt-3">
+                        <div class="col-sm-2">
+                            <label class="form-label text-body">Пол
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="row">
+                                <div class="col-sm-2 pe-4">
+                                    <div class="btn-group" role="group" aria-label="sex">
+                                        <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_male" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio_male">М</label>
+                                        
+                                        <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_female" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio_female">Ж</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="form-label text-body">Контактные телефоны
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <textarea class="form-control" aria-label="contact-numbers" placeholder="Введите контактные номера телефонов"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 pt-3 pb-3">
+                        <div class="col-sm-6 pe-4">
+                            <label class="form-label text-body">Категория пассажира
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select me-2" required="" type-passenger>
+                                <option value="">Выберите категорию</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6 pe-4">
+                            <label class="form-label text-body">Наличие ЭКС (электрокардиостимулятора сердца)
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="btn-group" role="group" aria-label="ecp">
+                                <input type="radio" class="btn-check" name="btnradio_ecp" id="btnradio_ecp_yes" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio_ecp_yes">Есть ЭКС</label>
+                              
+                                <input type="radio" class="btn-check" name="btnradio_ecp" id="btnradio_ecp_no" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio_ecp_no">Нет ЭКС</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 pt-3 pb-3">
+                        <label class="form-label text-body">Дополнительная информация</label>
+                        <textarea class="form-control" aria-label="additional-info" placeholder="Введите пометку для пассажира позволяющую улучшить качество обслуживания конкретного пассажира"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script_main_window.js"></script>
+</body>
+
+</html>

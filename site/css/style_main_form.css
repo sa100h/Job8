@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    height: 100vh;
+    /* display:grid; */
+    /* place-items: center; */
+}
+
+.no-margin-right {
+    margin-right: 0px;
+}
+
+.text-gray-500 {
+    background: #adb5bd;
+}
+
+.sidebar-disable {
+    color: var(--bs-nav-link-disabled-color);
+}
+
+.sidebar-active {
+    color: #0D6EFD;
+    background-color: #cfe2ff;
+
+    border-right: 3px solid #0D6EFD;
+}
+
+.dropdown-toggle::after {
+    color: white;
+}
+
+.svg-color {
+    color: #3d8bfd;
+}
+
+.filter-max-width {
+    max-width: 325px;
+}
+
+.modal-1024px {
+    --bs-modal-width: 1024px;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.font-weight-400 {
+    font-weight: 400;
+}
+
+.order-status-pill {
+    padding: 4px 12px 6px 12px;
+    font-size: 12px;
+}
+
+.btn_hide {
+    display: none;
+}
