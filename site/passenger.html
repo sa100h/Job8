@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
     <title>MosTrans</title>
 
     <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/style_main_form.css">
+    <link rel="stylesheet" href="/css/style_table_hover.css">
 </head>
 
 <body>
@@ -127,7 +129,7 @@
                     </div>
 
                     <div class="table-responsive small">
-                        <table class="table table-sm align-middle">
+                        <table class="table table-sm align-middle" table-passenger>
                             <thead>
                                 <tr class="table-light">
                                     <th scope="col">ФИО пассажира</th>
@@ -140,84 +142,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
-                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999 - личный телефон, +79999999999 - телефон если не отвечает первый, +79999999999 - телефон если не отвечает третий</th>
-                                    <th class="pt-2 pb-2 font-weight-400">М</th>
-                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
-                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
-                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
-                                        <a class="nav-link sidebar-disable" href="#">
-                                            <i class="bi bi-pencil-fill"></i>
-                                            Изменить
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
-                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
-                                    <th class="pt-2 pb-2 font-weight-400">М</th>
-                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
-                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
-                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
-                                        <a class="nav-link sidebar-disable" href="#">
-                                            <i class="bi bi-pencil-fill"></i>
-                                            Изменить
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
-                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
-                                    <th class="pt-2 pb-2 font-weight-400">М</th>
-                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
-                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
-                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
-                                        <a class="nav-link sidebar-disable" href="#">
-                                            <i class="bi bi-pencil-fill"></i>
-                                            Изменить
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
-                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
-                                    <th class="pt-2 pb-2 font-weight-400">М</th>
-                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
-                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
-                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
-                                        <a class="nav-link sidebar-disable" href="#">
-                                            <i class="bi bi-pencil-fill"></i>
-                                            Изменить
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400">Андреев Андрей Андреевич</th>
-                                    <th class="pt-2 pb-2 w-30 font-weight-400">+79999999999</th>
-                                    <th class="pt-2 pb-2 font-weight-400">М</th>
-                                    <th class="pt-2 pb-2 font-weight-400">ИЗТ</th>
-                                    <th class="pt-2 pb-2 text-danger font-weight-400">Есть</th>
-                                    <th class="pt-2 pb-2 font-weight-400">Требуется предоставить коляску</th>
-                                    <th class="pt-2 pb-2 text-primary font-weight-400" passenger-id="123">
-                                        <a class="nav-link sidebar-disable" href="#">
-                                            <i class="bi bi-pencil-fill"></i>
-                                            Изменить
-                                        </a>
-                                    </th>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 
                 <nav aria-label="Page navigation" class="mt-4">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item disabled">
+                    <ul class="pagination justify-content-end" page-navigator>
+                        <!-- <li class="page-item disabled">
                             <a class="page-link" href="#" aria-label="Previous">
                                 <i class="bi bi-chevron-left"></i>
                             </a>
@@ -229,7 +161,7 @@
                             <a class="page-link" href="#" aria-label="Next">
                                 <i class="bi bi-chevron-right"></i>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
 
@@ -261,10 +193,10 @@
                                 placeholder="Введите имя" value="" required />
                         </div>
                         <div class="col-sm-4 pe-4">
-                            <label for="SecondName" class="form-label text-body">Отчество
+                            <label for="secondName" class="form-label text-body">Отчество
                                 <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control" id="SecondName"
+                            <input type="text" class="form-control" id="secondName"
                                 placeholder="Введите отчество" value="" required />
                         </div>
                     </div>
@@ -278,7 +210,7 @@
                             <div class="row">
                                 <div class="col-sm-2 pe-4">
                                     <div class="btn-group" role="group" aria-label="sex">
-                                        <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_male" autocomplete="off" checked>
+                                        <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_male" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="btnradio_male">М</label>
                                         
                                         <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_female" autocomplete="off">
@@ -328,7 +260,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="button" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-primary" id="btn-passenger-bd">Сохранить</button>
                 </div>
             </div>
         </div>

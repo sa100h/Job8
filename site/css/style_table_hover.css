@@ -1,0 +1,6 @@
+
+table.table>tbody>tr th[name]:hover {
+    color: #0A58CA !important;
+    text-decoration: underline;
+    /* background-color: #E7F1FF !important; */
+}
