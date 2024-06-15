@@ -2,15 +2,18 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     let button_sign_out = document.getElementById('dropdown--item--exit'),
-        passenger_category = document.querySelectorAll('select[type-passenger]'),
-        button_new_passenger = document.getElementById('button-add-passenger'),
-        button_order_filter = document.getElementById('button-order-filter'),
-        button_new_order = document.getElementById('button-add-order'),
-        select_hour = document.getElementById('order-hour'),
-        select_minute = document.getElementById('order-minute'),
-        order_type = document.querySelectorAll('select[order-status]'),
-        order_set_employee = document.querySelectorAll('select[order-set-employee]'),
-        select_stations = document.querySelectorAll('select[order-station]');
+		passenger_category = document.querySelectorAll('select[type-passenger]'),
+		button_new_passenger = document.getElementById('button-add-passenger'),
+		button_delete_user_new = document.getElementById('button-delete-user-new'),
+		button_order_filter = document.getElementById('button-order-filter'),
+		button_new_order = document.getElementById('button-add-order'),
+		button_new_user = document.getElementById('button-add-user'),
+		button_job_day_filter = document.getElementById('button-job-day-filter'),
+		select_hour = document.getElementById('order-hour'),
+		select_minute = document.getElementById('order-minute'),
+		order_type = document.querySelectorAll('select[order-status]'),
+		order_set_employee = document.querySelectorAll('select[order-set-employee]'),
+		select_stations = document.querySelectorAll('select[order-station]')
     
     let page_navigator = document.querySelector('ul[page-navigator]'),
         table_passenger = document.querySelector('table[table-passenger]').querySelector('tbody');
@@ -26,14 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.replace('/index.html');
         });
     };
-
-    if (button_new_order) {
-        button_new_order.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.replace('/orders-new-item.html');
-        });
-    };
-
+    
     const getResource = async (url) => {
         const res = await fetch(url, {});
 
@@ -521,6 +517,37 @@ document.addEventListener("DOMContentLoaded", () => {
             select_minute.add(temp);
           }
     };
+
+    if (button_new_order) {
+        button_new_order.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.replace('/orders-new-item.html');
+        });
+    };
+
+    if (button_new_user) {
+		button_new_user.addEventListener('click', e => {
+			e.preventDefault()
+			window.location.replace('/user-new.html')
+		});
+	};
+    if (button_job_day_filter) {
+		button_job_day_filter.addEventListener('click', e => {
+			e.preventDefault()
+			window.location.replace('/job-day-filter.html')
+		});
+	};
+
+    if (button_delete_user_new) {
+			button_delete_user_new.addEventListener('click', () => {
+				let modal_new_passenger = new bootstrap.Modal(
+					document.getElementById('modal-delete-user-new'),
+					{ keyboard: false }
+				)
+				modal_new_passenger.show()
+			});
+	};
+
 
     //#endregion toPage
     
