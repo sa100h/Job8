@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MosTrans</title>
+
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style_main_form.css">
+</head>
+
+<body>
+    <header class="bg-dark flex-md-nowrap navbar p-0 shadow sticky-top">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
+            <img src="/icons/main_frame_logo.png" alt="" srcset="">
+        </a>
+        <div class="d-flex me-md-5 me-lg-5">
+            <div class="d-flex flex-wrap align-items-center justify-content-lg-end">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-white">
+                            <i class="bi bi-person-fill"></i>
+                            Иванов И.И.
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#" id="dropdown--item--exit">Выход</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="navbar-nav flex-row d-md-none">
+                <li class="nav-item text-nowrap">
+                    <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" >
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+                    </div>
+<!-- Menu -->
+                    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                        <ul class="nav flex-column">
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/orders.html">
+                                    <i class="bi bi-calendar2-event-fill"></i>
+                                    Заявки
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/passenger.html">
+                                    <i class="bi bi-people-fill"></i>
+                                    Пассажиры
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-active" href="/job-day.html">
+                                    <i class="bi bi-clock-fill"></i>
+                                    Рабочий день
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/distr-order.html">
+                                    <i class="bi bi-graph-up"></i>
+                                    Распределение заявок
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/user.html">
+                                    <i class="bi bi-person-badge-fill"></i>
+                                    Пользователи и роли
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+<!-- Main window -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="row pt-3">
+                    <div class="col-sm-10">
+                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/job-day.html"><i class="bi bi-clock-fill me-1"></i>Рабочий день</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Андреев А.А.</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+<!-- Date meet -->
+                    <div class="col-sm-2 pe-2">
+                        <label for="job-day-filter-date-meet" class="form-label text-body">Дата встречи<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="job-day-date-meet" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                    </div>
+<!-- Time job -->
+                <div class="row">
+                    <div class="col-sm-3 pt-3">
+                        <label for="job-day-filter-time-work" class="form-label text-body">Время работы<span class="text-danger">*</span></label>
+                        <select class="form-select me-2 col-4" required="" time-work>
+                            <option value="7-19">07:00-19:00</option>
+                            <option value="8-20">08:00-20:00</option>
+                            <option value="20-8">20:00-08:00</option>
+                            <option value="8-17">08:00-17:00</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 pt-3">
+                        <label class="form-label text-body">Другое время работы<span class="text-danger">*</span></label> 
+                        <div class="col-sm-4 pe-2 d-flex">
+                            <div class="col-sm-8 d-flex">
+                                <select class="form-select" id="job-day-filter-from-hour" required="" from-job-time-hour></select>
+                                <span class="m-1">:</span>
+                                <select class="form-select" id="job-day-filter-from-minute" required="" from-job-time-minute></select>
+                            </div>
+                            <span class="m-1">-</span>
+                            <div class="col-sm-8 d-flex">
+                                <select class="form-select" id="job-day-filter-to-hour" required="" to-job-time-hour></select>
+                                <span class="m-1">:</span>
+                                <select class="form-select" id="job-day-filter-to-minute" required="" to-job-time-minute></select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>   
+<!-- Status job -->
+                <div class="row">
+                    <div class="col-sm-3 pt-3">
+                        <label for="job-day-status" class="form-label text-body">Статус<span class="text-danger">*</span></label>
+                        <select class="form-select me-2 col-4" required="" job-status>
+                            <option value="weekend">Выходной</option>
+                            <option value="vacation">Отпуск</option>
+                            <option value="medical">Больничный</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 pt-3">
+                        <label for="job-day-date-status" class="form-label text-body">Даты<span class="text-danger">*</span></label> 
+                        <div class="col-sm-6 pe-2 d-flex">
+                            <input type="date" class="form-control" id="job-day-from-date-status" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                                <span class="m-1">-</span>
+                            <input type="date" class="form-control" id="job-day-to-date-status" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                        </div>
+                    </div>
+                    
+                </div>           
+ <!-- Add shift -->
+                    <div class="col-sm-2 pe-2">
+                        <label for="job-day-date-add-shift" class="form-label text-body">Доп. смена<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="job-day-date-add-shift" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                    </div>               
+<!-- study -->
+                    <div class="col-sm-6 pt-3">
+                        <label class="form-label text-body">Учеба с отрывом от производства:</label> 
+                        <div class="col-sm-6 pe-2 d-flex">
+                            <input type="date" class="form-control" id="job-day-from-time-study" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                                <span class="m-1">-</span>
+                            <input type="date" class="form-control" id="job-day-to-time-study" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                        </div>
+                    </div>
+<!-- Change-job-time -->
+                    <div class="col-sm-6 pt-3">
+                        <label class="form-label text-body">Изменение времени работы:</label> 
+                        <div class="col-sm-4 pe-2 d-flex">
+                            <div class="col-sm-8 d-flex">
+                                <select class="form-select" id="job-day-change-from-hour" required="" job-day-change-from-hour></select>
+                                <span class="m-1">:</span>
+                                <select class="form-select" id="job-day-change-from-minute" required="" job-day-change-from-minute></select>
+                            </div>
+                            <span class="m-1">-</span>
+                            <div class="col-sm-8 d-flex">
+                                <select class="form-select" id="job-day-change-to-hour" required="" job-day-change-to-hour></select>
+                                <span class="m-1">:</span>
+                                <select class="form-select" id="job-day-change-to-minute" required="" job-day-change-to-minute></select>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- checkbox-coach -->
+                <div class="col-sm-4 pt-3 pb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox-coach">
+                    <label class="form-check-label" for="job-day-checkbox-coach">
+                        Стажировка
+                    </label>
+                </div>
+<!-- Post -->
+                <div class="col-sm-4 pt-3 border-top">
+                    <label for="jod-day-coach" class="form-label text-body">Наставник:<span class="text-danger">*</span></label>
+                    <select class="form-select me-2 col-4" required="" jod-day-coach>
+                        <option value="user"> Иванов И.И.</option>
+                    </select>
+                </div>
+<!-- save -->
+                <div class="d-flex justify-content-end mb-3">
+                    <button type="button" class="btn btn-primary" id="button-send-filter-job-day">
+                        Сохранить
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script_main_window.js"></script>
+</body>
+
+</html>

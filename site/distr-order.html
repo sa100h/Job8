@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MosTrans</title>
+
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style_main_form.css">
+    <link rel="stylesheet" href="/css/style_ganta.css">
+</head>
+
+<body>
+    <header class="bg-dark flex-md-nowrap navbar p-0 shadow sticky-top">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
+            <img src="/icons/main_frame_logo.png" alt="" srcset="">
+        </a>
+        <div class="d-flex me-md-5 me-lg-5">
+            <div class="d-flex flex-wrap align-items-center justify-content-lg-end">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-white">
+                            <i class="bi bi-person-fill"></i>
+                            Иванов И.И.
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#" id="dropdown--item--exit">Выход</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="navbar-nav flex-row d-md-none">
+                <li class="nav-item text-nowrap">
+                    <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" >
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+                    </div>
+<!-- Menu -->
+                    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                        <ul class="nav flex-column">
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/orders.html">
+                                    <i class="bi bi-calendar2-event-fill"></i>
+                                    Заявки
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/passenger.html">
+                                    <i class="bi bi-people-fill"></i>
+                                    Пассажиры
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/job-day.html">
+                                    <i class="bi bi-clock-fill"></i>
+                                    Рабочий день
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-active" href="/distr-order.html">
+                                    <i class="bi bi-graph-up"></i>
+                                    Распределение заявок
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/user.html">
+                                    <i class="bi bi-person-badge-fill"></i>
+                                    Пользователи и роли
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+<!-- Main window -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<!-- header -->
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h4 class="h4">Распределение заявок</h4>
+                    <div class="col-xs-2 pe-2">
+                        <input type="date" class="form-control" id="job-day-date-meet" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
+                    </div>
+                </div>
+                <div class="gantt">
+
+                    <span class="d-1"></span>
+                    <span class="d-2"></span>
+                    <span class="d-3"></span>
+                    <span class="d-4"></span>
+                    <span class="d-5"></span>
+                    <span class="d-6"></span>
+                    <span class="d-7"></span>
+                    <span class="d-8"></span>
+                    <span class="d-9"></span>
+                    <span class="d-10"></span>
+                    <span class="d-11"></span>
+                    <span class="d-12"></span>
+                    <span class="d-13"></span>
+                    <span class="d-14"></span>
+
+
+                    <h6 class="h-1">02:00</h6>
+                    <h6 class="h-2">04:00</h6>
+                    <h6 class="h-3">06:00</h6>
+                    <h6 class="h-4">08:00</h6>
+                    <h6 class="h-5">10:00</h6>
+                    <h6 class="h-6">12:00</h6>
+                    <h6 class="h-7">14:00</h6>
+                    <h6 class="h-8">16:00</h6>
+                    <h6 class="h-9">18:00</h6>
+                    <h6 class="h-10">20:00</h6>
+                    <h6 class="h-11">22:00</h6>
+                    <h6 class="h-12">00:00</h6>
+                    <h6 class="h-13">02:00</h6>
+
+
+                    
+
+
+                  <div class="t-1 text-bg-primary" style="grid-column: 1 / span 4;"></div>
+
+                    <div class="t-2 text-bg-primary" style="grid-column: 3 / span 12;"></div>
+
+                    <div class="t-3 text-bg-primary" style="grid-column: 1 / span 5;"></div>
+
+                    <div class="t-4 text-bg-primary" style="grid-column: 6 / span 3;"></div>
+
+                    <div class="t-5 text-bg-primary" style="grid-column: 3 / span 3;"></div>
+
+                    <div class="t-6 text-bg-primary" style="grid-column: 4 / span 6;"></div>
+
+                    <div class="t-7 text-bg-primary" style="grid-column: 6 / span 9;"></div>
+
+                    <div class="t-8 text-bg-primary" style="grid-column: 8 / span 1;"></div>
+
+                    <div class="t-9 text-bg-primary" style="grid-column: 10 / span 5;"></div>
+
+                
+
+                </div>
+
+
+
+                
+
+            </main>
+        </div>
+    </div>
+
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script_main_window.js"></script>
+</body>
+
+</html>

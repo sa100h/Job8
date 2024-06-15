@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MosTrans</title>
+
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style_main_form.css">
+</head>
+
+<body>
+    <header class="bg-dark flex-md-nowrap navbar p-0 shadow sticky-top">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
+            <img src="/icons/main_frame_logo.png" alt="" srcset="">
+        </a>
+        <div class="d-flex me-md-5 me-lg-5">
+            <div class="d-flex flex-wrap align-items-center justify-content-lg-end">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-white">
+                            <i class="bi bi-person-fill"></i>
+                            Иванов И.И.
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#" id="dropdown--item--exit">Выход</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="navbar-nav flex-row d-md-none">
+                <li class="nav-item text-nowrap">
+                    <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" >
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+                    </div>
+<!-- Menu -->
+                    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                        <ul class="nav flex-column">
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/orders.html">
+                                    <i class="bi bi-calendar2-event-fill"></i>
+                                    Заявки
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/passenger.html">
+                                    <i class="bi bi-people-fill"></i>
+                                    Пассажиры
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/job-day.html">
+                                    <i class="bi bi-clock-fill"></i>
+                                    Рабочий день
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-disable" href="/distr-order.html">
+                                    <i class="bi bi-graph-up"></i>
+                                    Распределение заявок
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sidebar-active" href="/user.html">
+                                    <i class="bi bi-person-badge-fill"></i>
+                                    Пользователи и роли
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+<!-- Main window -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="row pt-3">
+                    <div class="col-sm-10">
+                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/user.html"><i class="bi bi-gear-fill me-1"></i>Пользователи и роли</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Добавление новой заявки</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger" id="button-delete-user-new" data-bs-toggle="modal" data-bs-target="#user-new-delete><i class="bi bi-trash3-fill me-1"></i>Удалить</button>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill me-1"></i>Изменить</button>
+                    </div>
+
+
+                </div>
+<!-- Login and password -->
+                <div class="row g-3 pb-3">
+                    <div class="col-sm-3 pe-3">
+                        <label for="user-new-login" class="form-label text-body">Логин<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-login" placeholder="Введите логин" value="" required="">
+                    </div>
+
+                    <div class="col-sm-3 pe-3">
+                        <label for="user-new-password" class="form-label text-body">Пароль<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-password" placeholder="Введите пароль" value="" required="">
+                    </div>
+                </div>
+<!-- FIO -->
+                <div class="row g-3 pb-3">
+                    <div class="col-sm-4 pe-3">
+                        <label for="user-new-surname" class="form-label text-body">Фамилия<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-surname" placeholder="Введите фамилию" value="" required="">
+                    </div>
+
+                    <div class="col-sm-4 pe-3">
+                        <label for="user-new-name" class="form-label text-body">Имя<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-name" placeholder="Введите имя" value="" required="">
+                    </div>
+                    <div class="col-sm-4 pe-3">
+                        <label for="user-new-patronymic" class="form-label text-body">Отчество<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-patronymic" placeholder="Введите отчество" value="" required="">
+                    </div>
+                </div>
+<!-- access-rights -->
+                <div class="col-sm-4 pb-3">
+                    <label for="user-new-acces-rights" class="form-label text-body">Права доступа<span class="text-danger">*</span></label>
+                    <select class="form-select me-2 col-4" required="" access-rights>
+                                <option value="the highest">the highest</option>
+                                <option value="high"> high</option>
+                                <option value="medium">medium</option>
+                                <option value="low">low</option>
+                            </select>
+                </div>
+<!-- checkbox-inspector -->
+                <div class="col-sm-4 pb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox-inspector">
+                    <label class="form-check-label" for="user-new-inspector">
+                        Инспектор
+                    </label>
+                </div>
+<!-- Other window -->
+                <div class="main_table mb-3 border-top" id="user-new-inspector">
+<!-- Post -->
+                <div class="col-sm-4 pt-3">
+                    <label for="user-new-post" class="form-label text-body">Должность<span class="text-danger">*</span></label>
+                    <select class="form-select me-2 col-4" required="" access-rights>
+                        <option value="csi"> ЦСИ</option>
+                        <option value="ci"> ЦИ</option>
+                    </select>
+                </div>
+<!-- sex -->
+                <div class="row g-3 pt-3">
+                    <div class="col-sm-2">
+                        <label class="form-label text-body">Пол
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="row">
+                            <div class="col-sm-2 pe-4">
+                                <div class="btn-group" role="group" aria-label="sex">
+                                    <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_male" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="btnradio_male">М</label>
+                                    
+                                    <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_female" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio_female">Ж</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!-- Tel -->
+                <div class="row g-3 pt-3">
+                    <div class="col-sm-6 pe-3">
+                        <label for="user-new-work-tel" class="form-label text-body">Рабочий телефон<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-work-tel" placeholder="Введите рабочий телефон" value="" required="">
+                    </div>
+
+                    <div class="col-sm-6 pe-3">
+                        <label for="user-new-personal-tel" class="form-label text-body">Личный телефон<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-personal-tel" placeholder="Введите личный телефон" value="" required="">
+                    </div>
+                </div>
+<!-- Shift -->
+                <div class="row g-3">
+                <div class="col-sm-6 pt-3">
+                    <label for="user-new-shift" class="form-label text-body">Смена<span class="text-danger">*</span></label>
+                    <select class="form-select me-2 col-4" required="" shift>
+                        <option value="1">1 смена</option>
+                        <option value="2">2 смена</option>
+                        <option value="1n">1 смена (ночная)</option>
+                        <option value="2n">2 смена (ночная)</option>
+                        <option value="5">5 смена</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-6 pt-3">
+                    <label for="user-new-time-work" class="form-label text-body">Время работы<span class="text-danger">*</span></label>
+                    <select class="form-select me-2 col-4" required="" time-work>
+                        <option value="7-19">07:00-19:00</option>
+                        <option value="8-20">08:00-20:00</option>
+                        <option value="20-8">20:00-08:00</option>
+                        <option value="8-17">08:00-17:00</option>
+                    </select>
+                </div>
+                </div>
+<!-- Tabel number -->
+                <div class="row g-3 pt-3">
+                    <div class="col-sm-4 pe-3">
+                        <label for="user-new-tabel-number" class="form-label text-body">Табельный номер<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="user-new-tabel-number" placeholder="Введите табельный номер" value="" required="">
+                    </div>
+                </div>
+<!-- checkbox-easy-job -->
+                <div class="col-sm-8 pt-3">
+                    <input class="form-check-input" type="checkbox" value="" id="user-new-easy-job">
+                    <label class="form-check-label" for="user-new-easy-job">
+                        Только легкий труд (сотрудники, которым запрещены определенные действия по состоянию здоровья)
+                    </label>
+                </div>               
+                </div>
+<!-- Button-save -->
+                <div class="d-flex justify-content-end mb-3">
+                    <button type="button" class="btn btn-primary" id="button-send-new-user">
+                        Сохранить
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-delete-user-new" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="user-new-delete-label">Удалить пользователя?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    Пользователь будет удален из системы
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script_main_window.js"></script>
+</body>
+
+</html>
