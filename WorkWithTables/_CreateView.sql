@@ -270,3 +270,28 @@ CREATE OR REPLACE VIEW form_select_employee_in_bid AS
 		ON ew.id = elw.id
 	LEFT JOIN areas a
 		ON a.id = ew.area_id
+		
+		
+		
+		
+-- Рабочий день сотрудника
+
+CREATE OR REPLACE VIEW public.working_day_employees
+ AS
+ SELECT wd.id,
+    wd.employee_work_id,
+    e.is_male,
+    wd.shift_date + wd.start_time AS start_time,
+        CASE
+            WHEN wd.end_time < wd.start_time THEN wd.shift_date + wd.end_time + '1 day'::interval
+            ELSE wd.shift_date + wd.end_time
+        END AS end_time,
+	wd.lunch_start as lunch_start,
+	wd.lunch_end as lunch_end 
+   FROM working_days wd
+     JOIN employee_works ew ON ew.id = wd.employee_work_id
+     JOIN employees e ON e.user_id = ew.employee_id;
+
+ALTER TABLE public.working_day_employees
+    OWNER TO postgres;
+
