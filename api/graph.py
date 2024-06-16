@@ -81,7 +81,7 @@ async def find_path(stations: dict, start_node: int, end_node: int):
             pointer = prev_node.get(pointer)
         path.append(pointer)
         
-        print(' -> '.join(f'{p}' for p in path[::-1]))
+        # print(' -> '.join(f'{p}' for p in path[::-1]))
         
     except:
         traceback.print_exc()
@@ -90,6 +90,50 @@ async def find_path(stations: dict, start_node: int, end_node: int):
         
     finally:
         return path[::-1], weights.get(end_node)
+
+async def get_path_time(stations: dict, start_node: int, end_node: int):
+    weights = {start_node: datetime.time(0)}
+    nodes = set(stations)
+    pass_node = set()
+    queue_node = [start_node]
+    cur_node = start_node
+    prev_node = {}
+    path = []
+    
+    try:
+        for _ in range(len(nodes)):
+            
+            for cur_node in queue_node:
+                pass_node.add(cur_node)
+                for cur in stations.get(cur_node, [0]):
+                    if cur in pass_node or not cur:
+                        continue
+                    weights[cur] = min(weights.get(cur, datetime.time(23)), time_addition(weights.get(cur_node, datetime.time(0)), stations.get(cur_node).get(cur)))
+                    prev_node[cur] = cur_node
+                    
+                # pprint(weights)
+            if cur_node == end_node:
+                break
+            else:        
+                temp = [(k,v) for k,v in weights.items() if k not in pass_node]
+                temp.sort(key=lambda x: x[1])
+                queue_node.extend(list(k for k,v in temp))
+        
+        pointer = end_node
+        while pointer != start_node:
+            path.append(pointer)
+            pointer = prev_node.get(pointer)
+        path.append(pointer)
+        
+        # print(' -> '.join(f'{p}' for p in path[::-1]))
+        
+    except:
+        traceback.print_exc()
+        path = []
+        weights = {end_node: None}
+        
+    finally:
+        return weights.get(end_node)
 
 if __name__ == '__main__':
     pass
