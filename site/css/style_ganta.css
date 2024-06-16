@@ -7,6 +7,9 @@
   grid-gap: 10px 0px;
 
   width: 100%;
+  transform: scale(0.9);
+  
+
 
   padding-top: 40px;
 
@@ -20,7 +23,7 @@ span {
   grid-row: 2 / span 14;
 
 }
-span.d-0 { grid-column: 1;border-right: 1px solid grey;}
+span.d-0 { grid-column: 1;}
 span.d-1 { grid-column: 2; border-right: 1px solid grey;}
 span.d-2 { grid-column: 3; border-right: 1px solid grey;}
 span.d-3 { grid-column: 4; border-right: 1px solid grey;}
@@ -35,7 +38,7 @@ span.d-11 { grid-column: 12; border-right: 1px solid grey;}
 span.d-12 { grid-column: 13; border-right: 1px solid grey;}
 span.d-13 { grid-column: 14; border-right: 1px solid grey;}
 span.d-14 { grid-column: 14; border-right: 1px solid grey;}
-
+span.d-15 { grid-column: 14; border-right: 1px solid grey;}
 
 h6 {
 
@@ -65,7 +68,7 @@ h6.h-sat { grid-column: 14 / span 4; }
 
   color: white;
 
-  font-size: 12px;
+  font-size: 10px;
 
   padding: 10px 20px;
 
