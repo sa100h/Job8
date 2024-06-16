@@ -2,5 +2,13 @@
 table.table>tbody>tr th[name]:hover {
     color: #0A58CA !important;
     text-decoration: underline;
+    cursor: pointer;
+    /* background-color: #E7F1FF !important; */
+}
+
+table.table>tbody>tr th[id]:hover {
+    color: #0A58CA !important;
+    text-decoration: underline;
+    cursor: pointer;
     /* background-color: #E7F1FF !important; */
 }

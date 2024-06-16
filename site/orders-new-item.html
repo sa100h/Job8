@@ -76,21 +76,21 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link sidebar-disable" href="#">
+                                <a class="nav-link sidebar-disable" href="/job-day.html">
                                     <i class="bi bi-clock-fill"></i>
                                     Рабочий день
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link sidebar-disable" href="#">
+                                <a class="nav-link sidebar-disable" href="/distr-order.html">
                                     <i class="bi bi-graph-up"></i>
                                     Распределение заявок
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link sidebar-disable" href="#">
+                                <a class="nav-link sidebar-disable" href="/user.html">
                                     <i class="bi bi-person-badge-fill"></i>
                                     Пользователи и роли
                                 </a>
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="table-responsive small">
-                        <table class="table table-sm align-middle">
+                        <table class="table table-sm align-middle" table-passenger-order>
                             <thead>
                                 <tr class="table-light">
                                     <th scope="col"></th>
@@ -203,7 +203,7 @@
                     </div>
 
                     <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-end">
+                        <ul class="pagination justify-content-end" page-navigator>
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" aria-label="Previous">
                                     <i class="bi bi-chevron-left"></i>
@@ -253,11 +253,11 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="btn-group" role="group" aria-label="ecp">
-                            <input type="radio" class="btn-check" name="btnradio_ecp" id="btnradio_ecp_yes" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="btnradio_ecp_yes">Нужна помощь</label>
+                            <input type="radio" class="btn-check" name="btnradio_help" id="btnradio_help_yes" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio_help_yes">Нужна помощь</label>
                           
-                            <input type="radio" class="btn-check" name="btnradio_ecp" id="btnradio_ecp_no" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="btnradio_ecp_no">Помощь не нужна</label>
+                            <input type="radio" class="btn-check" name="btnradio_help" id="btnradio_help_no" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio_help_no">Помощь не нужна</label>
                         </div>
                     </div>
                 </div>
@@ -348,13 +348,6 @@
                         </select>
                     </div>
 
-                    <div class="col-sm-4 pe-4 mt-2">
-                        <label class="form-label text-body">Станция пересадки</label>
-                        <select class="form-select me-2" required="" order-station disabled>
-                            <option value="0">Не определена</option>
-                        </select>
-                    </div>
-
                     <button type="button" class="btn btn-outline-primary col-2 col-md-3 mt-2 btn_hide" id="button-add-transfer">
                         <i class="bi bi-plus-lg"></i>
                         Добавить станцию пересадки
@@ -433,9 +426,9 @@
                     </div>
                 </div>
 
-                <div class="row g-3 pt-3 pb-3">
+                <div class="row g-3 pt-3 pb-3" employee-passenger>
                     <label class="form-label text-body">Сотрудник 1</label>
-                    <div class="d-flex m-0">
+                    <div class="d-flex m-0" >
                         <div class="col-4 me-3">
                             <select class="form-select me-2" required="" order-set-employee></select>
                         </div>
@@ -444,12 +437,11 @@
                             Удалить сотрудника
                         </button>
                     </div>
-
-                    <button type="button" class="btn btn-outline-primary col-3 col-md-4 m-2" button-set-employee>
-                        <i class="bi bi-plus-lg"></i>
-                        Добавить сотрудника для выполнения заявки
-                    </button>
                 </div>
+                <button type="button" class="btn btn-outline-primary col-3 col-md-4 m-2" button-set-employee>
+                    <i class="bi bi-plus-lg"></i>
+                    Добавить сотрудника для выполнения заявки
+                </button>
 
                 <h5 class="mt-4 mb-4">5. Информация о заявке</h5>
                 <div class="row g-3 pb-3 mt-3">
@@ -473,6 +465,103 @@
                     </button>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <div class="modal modal-1024px fade" id="modal-passenger" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавление нового пассажира</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3 pb-3">
+                        <div class="col-sm-4 pe-4">
+                            <label for="firstName" class="form-label text-body">Фамилия
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="firstName"
+                                placeholder="Введите фамилию" value="" required />
+                        </div>
+                        <div class="col-sm-4 pe-4">
+                            <label for="lastName" class="form-label text-body">Имя
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="lastName"
+                                placeholder="Введите имя" value="" required />
+                        </div>
+                        <div class="col-sm-4 pe-4">
+                            <label for="secondName" class="form-label text-body">Отчество
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="secondName"
+                                placeholder="Введите отчество" value="" required />
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3 pt-3">
+                        <div class="col-sm-2">
+                            <label class="form-label text-body">Пол
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="row">
+                                <div class="col-sm-2 pe-4">
+                                    <div class="btn-group" role="group" aria-label="sex">
+                                        <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_male" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio_male">М</label>
+                                        
+                                        <input type="radio" class="btn-check" name="btnradio_sex" id="btnradio_female" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio_female">Ж</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="form-label text-body">Контактные телефоны
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <textarea class="form-control" aria-label="contact-numbers" placeholder="Введите контактные номера телефонов"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 pt-3 pb-3">
+                        <div class="col-sm-6 pe-4">
+                            <label class="form-label text-body">Категория пассажира
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select me-2" required="" type-passenger>
+                                <option value="">Выберите категорию</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6 pe-4">
+                            <label class="form-label text-body">Наличие ЭКС (электрокардиостимулятора сердца)
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="btn-group" role="group" aria-label="ecp">
+                                <input type="radio" class="btn-check" name="btnradio_ecp" id="btnradio_ecp_yes" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio_ecp_yes">Есть ЭКС</label>
+                              
+                                <input type="radio" class="btn-check" name="btnradio_ecp" id="btnradio_ecp_no" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio_ecp_no">Нет ЭКС</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 pt-3 pb-3">
+                        <label class="form-label text-body">Дополнительная информация</label>
+                        <textarea class="form-control" aria-label="additional-info" placeholder="Введите пометку для пассажира позволяющую улучшить качество обслуживания конкретного пассажира"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary" id="btn-passenger-bd">Сохранить</button>
+                </div>
+            </div>
         </div>
     </div>
 
