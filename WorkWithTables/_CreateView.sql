@@ -77,7 +77,6 @@ CREATE OR REPLACE VIEW form_main_bid AS
 		*
 	from bids_all;
 
-
 -- Информация о заявке в форме Просмотра
 CREATE OR REPLACE VIEW form_view_bid AS
 	with
@@ -85,7 +84,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 	(
 		SELECT 
 			  eb.bid_id as bid_id
-			, get_name(u.last_name, u.first_name, u.middle_name) as employee_name
+			, ew.id as employee_work_id
 		FROM employee_on_bids eb
 		left join employee_works ew
 			ON ew.id = eb.employee_work_id
@@ -96,7 +95,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 	(
 		select 
 			bid_id
-			, STRING_AGG(employee_name, ', ') AS employees
+			, Array_AGG(employee_work_id) AS employee_work_ids
 		from bids_with_employees
 		GROUP BY bid_id
 	)
@@ -124,7 +123,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 			, b.number_sex_m as number_sex_m
 			, b.number_sex_f as number_sex_f
 			
-			, bge.employees as employees
+			, bge.employee_work_ids as employee_work_ids
 
 			, am.name as acceptance_method
 			, b.additional_info as additional_info
@@ -143,6 +142,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 	select
 		*
 	from bids_all;
+
 
 
 	
