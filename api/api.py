@@ -250,7 +250,7 @@ async def test():
                             employee_iter2[empl]['work_end'] = employee_iter2[empl]['lunch_end']
             else:
                 flag = False
-                if employee_iter2[empl]['work_end'] > bids[qb]['time_start']:
+                if employee_iter2[empl]['work_end'] < bids[qb]['time_start']:
                     time_to_station = await graph.get_path_time(cache_graph.get('graph'), employee_iter2[empl]['last_station'], bids[qb]['start_station'])
                     
                     if bids[qb]['time_start'] > union_date_time(employee_iter2[empl]['work_end'], [time_to_station]) and \
