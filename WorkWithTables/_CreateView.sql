@@ -78,8 +78,6 @@ CREATE OR REPLACE VIEW form_main_bid AS
 	from bids_all;
 
 
-
-
 -- Информация о заявке в форме Просмотра
 CREATE OR REPLACE VIEW form_view_bid AS
 	with
@@ -108,14 +106,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 			  b.id as number
 			, s.name as status
 		
-			, mp.last_name as pas_last_name
-			, mp.first_name as pas_first_name
-			, mp.middle_name as pas_middle_name
-			, mp.sex as pas_sex
-			, mp.phone_info as pas_phone_info
-			, mp.category_code as pas_category_code
-			, mp.is_EKS as pas_is_EKS
-			, mp.add_info as pas_add_info
+			, b.pas_id as pas_id
 		
 			, b.count_pass as count_pass
 			, c.code as category_code
@@ -136,6 +127,7 @@ CREATE OR REPLACE VIEW form_view_bid AS
 			, bge.employees as employees
 
 			, am.name as acceptance_method
+			, b.additional_info as additional_info
 		FROM bids b
 		INNER JOIN form_main_passenger mp
 			ON mp.pas_id = b.pas_id
