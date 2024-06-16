@@ -110,8 +110,8 @@
                         <input type="date" class="form-control" id="job-day-date-meet" placeholder="Дата встречи" value="2024-06-12" min="2024-06-12" required />
                     </div>
                 </div>
-                <div class="gantt col-lg-12">
-
+                <div class="gantt col-lg-10">
+                    
                     <span class="d-0"></span>
                     <span class="d-1"></span>
                     <span class="d-2"></span>
@@ -127,8 +127,10 @@
                     <span class="d-12"></span>
                     <span class="d-13"></span>
                     <span class="d-14"></span>
+                    <span class="d-15"></span>
                     
 
+                    <h6 class=""></h6>
                     <h6 class=""></h6>
                     <h6 class="h-1">02:00</h6>
                     <h6 class="h-2">04:00</h6>
@@ -158,23 +160,23 @@
 
 
                     
-                    <button type="button" class="t-1 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 00:00 - 09:00 Заявка №123456" style="grid-column: 2 / span 4;"></button>
+                    <div class="t-1 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 00:00 - 09:00 Заявка №123456"  style="grid-column: 3 / span 4;"></div>
                     
-                    <button type="button" class="t-2 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 00:00 - 11:00 Заявка №123456" style="grid-column: 2 / span 5;"></button>
+                    <div class="t-2 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 00:00 - 11:00 Заявка №123456" style="grid-column: 3 / span 5;"></div>
                     
-                    <button type="button" class="t-3 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 09:00 - 15:00 Заявка №123456" style="grid-column: 6 / span 3;"></button>
+                    <div class="t-3 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 09:00 - 15:00 Заявка №123456" style="grid-column: 7 / span 3;"></div>
                     
-                    <button type="button" class="t-4 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 03:00 - 09:00 Заявка №123456" style="grid-column: 3 / span 3;"></button>
+                    <div class="t-4 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 03:00 - 09:00 Заявка №123456" style="grid-column: 3 / span 3;"></div>
                     
-                    <button type="button" class="t-5 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 09:00 - 00:00 Заявка №123456" style="grid-column: 2 / span 4;"></button>
+                    <div class="t-5 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 09:00 - 00:00 Заявка №123456" style="grid-column: 3 / span 4;"></div>
                     
-                    <button type="button" class="t-6 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 05:00 - 15:00 Заявка №123456" style="grid-column: 4 / span 5;"></button>
+                    <div class="t-6 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 05:00 - 15:00 Заявка №123456" style="grid-column: 5 / span 5;"></div>
                     
-                    <button type="button" class="t-7 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 09:00 - 01:00 Заявка №123456" style="grid-column: 6 / span 8;"></button>
+                    <div class="t-7 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 09:00 - 01:00 Заявка №123456" style="grid-column: 7 / span 8;"></div>
 
-                    <button type="button" class="t-8 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 11:00 - 13:00 Заявка №123456" style="grid-column: 7 / span 1;"></button>
+                    <div class="t-8 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 11:00 - 13:00 Заявка №123456" style="grid-column: 8 / span 1;"></div>
 
-                    <button type="button" class="t-9 btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-content="Иванов И. 15:00 - 01:00 Заявка №123456" style="grid-column: 9 / span 5;"></button>
+                    <div class="t-9 btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Иванов И. 15:00 - 01:00 Заявка №123456" style="grid-column: 10 / span 5;"></div>
                
 
                 </div>
@@ -190,8 +192,8 @@
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script_main_window.js"></script>
-    <script>const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))</script>
+    <script>const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))</script>
 </body>
 
 </html>
